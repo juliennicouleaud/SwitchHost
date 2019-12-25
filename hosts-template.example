@@ -1,0 +1,36 @@
+127.0.0.1		localhost
+255.255.255.255	broadcasthost
+::1				localhost
+fe80::1%lo0		localhost
+
+
+
+#############################################
+############ Start Dynamic Part #############
+#############################################
+
+dynamicip	dev.nameofhost0.com
+dynamicip	dev.nameofhost1.com
+dynamicip	dev.nameofhost2.com
+dynamicip	dev.nameofhost3.com
+dynamicip	dev.nameofhost4.com
+
+#############################################
+############# End Dynamic Part ##############
+#############################################
+
+
+
+
+
+
+
+##############################################
+############# Start Static Part ##############
+##############################################
+
+127.0.0.1 		local.test.fr admin.local.test.fr
+
+##############################################
+############## End Static Part ###############
+##############################################
