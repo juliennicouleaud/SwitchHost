@@ -1,6 +1,12 @@
 #!/bin/bash
 
 ################
+## Configuration
+
+hostpath="/etc/"
+
+
+################
 ## Check if root
 
 if [ "$EUID" -ne 0 ]
@@ -35,8 +41,6 @@ esac
 
 ################
 ## Backup hosts file et remplace par le template
-
-hostpath="/etc/"
 
 echo "Backup current host file"
 cp "$hostpath"hosts "$hostpath"hosts-backup-$(date +%y-%m-%d)--$(date +"%T")
