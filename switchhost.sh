@@ -22,7 +22,7 @@ echo "Where are you?"
 echo "1. Home"
 echo "2. Work"
 echo "3. Bonnet"
-echo "4. Honor share"
+echo "4. Mobile share"
 echo "5. Host only"
 echo "6. Temp"
 
