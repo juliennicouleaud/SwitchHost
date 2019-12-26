@@ -1,7 +1,8 @@
 #!/bin/bash
 
-################
+################################
 ## Configuration and file existence check
+################################
 
 hostpath="/etc/"
 
@@ -11,8 +12,9 @@ if [ ! -f "$hostpath"hosts ]; then
 fi
 
 
-################
+################################
 ## Check if root
+################################
 
 if [ "$EUID" -ne 0 ]; then
     echo "Please run as root"
@@ -20,8 +22,9 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 
-################
+################################
 ## Read location and set IP
+################################
 
 echo "Where are you?"
 echo "1. Home"
@@ -44,8 +47,9 @@ case $reponse in
 esac
 
 
-################
+################################
 ## Backup hosts file et remplace par le template
+################################
 
 echo "Backuping current host file"
 if [ -f "$hostpath"hosts ]; then
@@ -65,8 +69,9 @@ else
 fi
 
 
-################
+################################
 ## Remplace variables with IP address
+################################
 
 echo "Setting IP addresses to:" $ip
 if [ -f "$hostpath"hosts ]; then
