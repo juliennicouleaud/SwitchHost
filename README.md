@@ -16,6 +16,3 @@ None, it's just a plain shell script to execute.
     ```bash
     sudo ./switchhost
     ```
-
-## TODO
-- n/a
