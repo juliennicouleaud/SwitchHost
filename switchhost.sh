@@ -11,7 +11,6 @@ if [ ! -f "$hostpath"hosts ]; then
 fi
 
 
-
 ################
 ## Check if root
 
@@ -34,12 +33,12 @@ echo "6. Temp"
 
 read reponse
 case $reponse in
-    [1] | [home]*) ip="192.168.1.62";;
-    [2] | [Work]*) ip="192.168.35.165";;
-    [3] | [bonnet]*) ip="192.168.1.17";;
-    [4] | [honor]*) ip="192.168.43.94";;
-    [5] | [host]*) ip="192.168.56.102";;
-    [6] | [temp]*) ip="192.168.56.102";;
+    1 | home | Home) ip="192.168.1.62";;
+    2 | work | Work) ip="192.168.35.165";;
+    3 | bonnet | Bonnet) ip="192.168.1.17";;
+    4 | mobile | Mobile | share | Share | "Mobile share" | "mobile share") ip="192.168.43.94";;
+    5 | host | Host | "Host only" | "host only") ip="192.168.56.102";;
+    6 | temp | Temp) ip="192.168.56.102";;
     *) echo "Erreur de saisie"
         exit 1;;
 esac
