@@ -1,17 +1,23 @@
 #!/bin/bash
 
 ################
-## Configuration
+## Configuration and file existence check
 
 hostpath="/etc/"
+
+if [ ! -f "$hostpath"hosts ]; then
+    echo "Warning : the file "$hostpath"hosts does not exist"
+    exit
+fi
+
 
 
 ################
 ## Check if root
 
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
-  exit
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root"
+    exit
 fi
 
 
@@ -42,16 +48,32 @@ esac
 ################
 ## Backup hosts file et remplace par le template
 
-echo "Backup current host file"
-cp "$hostpath"hosts "$hostpath"hosts-backup-$(date +%y-%m-%d)--$(date +"%T")
-rm "$hostpath"hosts
+echo "Backuping current host file"
+if [ -f "$hostpath"hosts ]; then
+    cp "$hostpath"hosts "$hostpath"hosts-backup-$(date +%y-%m-%d)--$(date +"%T")
+    rm "$hostpath"hosts
+else
+    echo "Can't find hosts file under :" $hostpath
+    exit
+fi
+
 echo "Replace current host file with template"
-cp ./hosts-template "$hostpath"hosts
+if [ -f ./hosts-template ]; then
+    cp ./hosts-template "$hostpath"hosts
+else
+    echo "Can't find hosts-template file in current directory"
+    exit
+fi
 
 
 ################
 ## Remplace variables with IP address
 
-echo "Set IP addresses to:" $ip
-sed -i -e "s/dynamicip/$ip/g" "$hostpath"hosts
+echo "Setting IP addresses to:" $ip
+if [ -f "$hostpath"hosts ]; then
+    sed -i -e "s/dynamicip/$ip/g" "$hostpath"hosts
+else
+    echo "Can't find hosts file under :" $hostpath
+    exit
+fi
 echo "Done :)"
