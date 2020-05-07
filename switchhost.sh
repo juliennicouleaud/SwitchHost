@@ -8,7 +8,6 @@ hostpath="/etc/"
 
 if [ ! -f "$hostpath"hosts ]; then
     echo "Warning : the file "$hostpath"hosts does not exist"
-    exit
 fi
 
 
@@ -33,15 +32,17 @@ echo "3. Bonnet"
 echo "4. Mobile share"
 echo "5. Host only"
 echo "6. Temp"
+echo "7. Sophie"
 
 read reponse
 case $reponse in
-    1 | home | Home) ip="192.168.1.62";;
+    1 | home | Home) ip="192.168.1.63";;
     2 | work | Work) ip="192.168.35.165";;
-    3 | bonnet | Bonnet) ip="192.168.1.17";;
+    3 | bonnet | Bonnet) ip="192.168.1.89";;
     4 | mobile | Mobile | share | Share | "Mobile share" | "mobile share") ip="192.168.43.94";;
-    5 | host | Host | "Host only" | "host only") ip="192.168.56.102";;
-    6 | temp | Temp) ip="192.168.56.102";;
+    5 | host | Host | "Host only" | "host only") ip="192.168.56.102";;
+    6 | temp | Temp) ip="192.168.1.89";;
+    7 | sophie | Sophie) ip="192.168.1.8";;
     *) echo "Erreur de saisie"
         exit 1;;
 esac
@@ -55,9 +56,6 @@ echo "Backuping current host file"
 if [ -f "$hostpath"hosts ]; then
     cp "$hostpath"hosts "$hostpath"hosts-backup-$(date +%y-%m-%d)--$(date +"%T")
     rm "$hostpath"hosts
-else
-    echo "Can't find hosts file under :" $hostpath
-    exit
 fi
 
 echo "Replace current host file with template"
