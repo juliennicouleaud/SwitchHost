@@ -33,6 +33,7 @@ echo "4. Mobile share"
 echo "5. Host only"
 echo "6. Temp"
 echo "7. Sophie"
+echo "8. Localhost"
 
 read reponse
 case $reponse in
@@ -43,6 +44,7 @@ case $reponse in
     5 | host | Host | "Host only" | "host only") ip="192.168.56.102";;
     6 | temp | Temp) ip="192.168.1.89";;
     7 | sophie | Sophie) ip="192.168.1.8";;
+    8 | local | localhost) ip="127.0.0.1";;
     *) echo "Erreur de saisie"
         exit 1;;
 esac
